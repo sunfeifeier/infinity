@@ -2,7 +2,12 @@
 $ uvicorn main:app
 
 ### To Run for All Hosts
+```bash
+# Go into the app folder
+$ cd app
+# Run the following command
 $ uvicorn main:app --host 0.0.0.0 --port 8000
+```
 
 ### To Build
 $ python setup.py bdist_wheel
