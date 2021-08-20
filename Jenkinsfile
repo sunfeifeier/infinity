@@ -39,6 +39,9 @@ pipeline {
                                     export PYTHONPATH="./app"
                                     python -m unittest
                                     echo "==========Testing and building=========="
+                                    source venv/bin/activate
+                                    python setup.py bdist_wheel
+                                    ls
                                     '''
                             }
                         }
