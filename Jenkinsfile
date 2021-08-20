@@ -42,8 +42,6 @@ pipeline {
                                     source venv/bin/activate
                                     python setup.py bdist_wheel
                                     ls
-                                    VERSION=`cat app/VERSION`
-                                    aws s3 cp dist/infinity-$VERSION* s3://usc-tony-infinity-us-east-1/
                                     '''
                             }
                         }
@@ -53,13 +51,10 @@ pipeline {
                             }
                             steps {
                                 script {
-                                    // env.WORKSPACE = pwd()
-                                    // def version = readFile "${env.WORKSPACE}/build.info"
-                                    // version = version.replaceAll("\n", "");
-                                    // println "Version is $version"
-                                    // sh label: 'Publish file', script: "deploy to you package management system"
                                     sh label: 'build', script: '''
                                     echo "Deploy to s3 bucket..."
+                                    VERSION=`cat app/VERSION`
+                                    aws s3 cp dist/infinity-$VERSION* s3://usc-tony-infinity-us-east-1/
                                     '''
                                 }
                             }
@@ -72,9 +67,14 @@ pipeline {
                                 script {
                                     sh label: 'build', script: '''
                                     echo "Download package from s3 bucket..."
-                                    # source venv/bin/activate
-                                    # export PYTHONPATH="./app"
-                                    # nohup uvicorn main:app --host 0.0.0.0 &
+                                    VERSION=`cat app/VERSION`
+                                    aws s3 cp s3://usc-tony-infinity-us-east-1/infinity-$VERSION-py3-none-any.whl /tmp
+                                    source venv/bin/activate
+                                    export PYTHONPATH="./app"
+                                    which pip
+                                    pip install /tmp/infinity-$VERSION-py3-none-any.whl
+                                    pip list
+                                    #nohup uvicorn main:app --host 0.0.0.0 &
                                     '''
                                 }
                             }
