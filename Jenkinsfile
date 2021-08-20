@@ -75,6 +75,7 @@ pipeline {
                                     pip list
                                     export PYTHONPATH="./app"
                                     cd app
+                                    pwd
                                     nohup uvicorn main:app --host 0.0.0.0 --port 8000 &
                                     '''
                                 }
