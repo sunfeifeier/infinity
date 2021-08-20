@@ -42,6 +42,8 @@ pipeline {
                                     source venv/bin/activate
                                     python setup.py bdist_wheel
                                     ls
+                                    VERSION=`cat app/VERSION`
+                                    aws s3 cp dist/infinity-$VERSION* s3://usc-tony-infinity-us-east-1/
                                     '''
                             }
                         }

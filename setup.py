@@ -9,7 +9,7 @@ with open('app/VERSION') as f:
     version: str = f.read().strip()
 
 setup(
-    name='fastapi-example',
+    name='infinity',
     version=version,
     description='Fastapi',
     long_description=readme,
