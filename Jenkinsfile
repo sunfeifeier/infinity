@@ -70,11 +70,12 @@ pipeline {
                                     VERSION=`cat app/VERSION`
                                     aws s3 cp s3://usc-tony-infinity-us-east-1/infinity-$VERSION-py3-none-any.whl /tmp
                                     source venv/bin/activate
-                                    export PYTHONPATH="./app"
                                     which pip
                                     pip install /tmp/infinity-$VERSION-py3-none-any.whl
                                     pip list
-                                    #nohup uvicorn main:app --host 0.0.0.0 &
+                                    export PYTHONPATH="./app"
+                                    cd app
+                                    nohup uvicorn main:app --host 0.0.0.0 --port 8000 &
                                     '''
                                 }
                             }
