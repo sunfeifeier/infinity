@@ -106,6 +106,9 @@ pipeline {
                     }
                 }
                 stage('Windows') {
+                    agent {
+                        label "master"
+                    }
                     stages {
                         stage('setup') {
 
@@ -113,6 +116,9 @@ pipeline {
                         stage('build') {
 
                         }
+                    }
+                    post {
+
                     }
                 }
             }
