@@ -4,6 +4,9 @@ pipeline {
     // You can specify agent label in later stage
     agent none
     options {
+        // Set failfast true for all subsequent parallel stages
+        // so you don't have to wait for all parallel stages to fail
+        // For this job to fail
         parallelsAlwaysFailFast()
     }
     stages {
@@ -99,6 +102,16 @@ pipeline {
                         always {
                             sh label: 'Linux build done', script: 'echo "Done Linux build"'
                             //cleanWs()//
+                        }
+                    }
+                }
+                stage('Windows') {
+                    stages {
+                        stage('setup') {
+
+                        }
+                        stage('build') {
+
                         }
                     }
                 }
