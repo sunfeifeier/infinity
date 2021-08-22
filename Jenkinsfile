@@ -33,7 +33,7 @@ pipeline {
                                     if [ ! -f ./requirements2.txt ]; then
                                         echo "Couldn'f find requirements.txt"
                                     fi
-                                    pip install -r requirements.txt
+                                    pip install -r requirements.2txt
                                     echo "==========End virtual env=========="
                                     '''
                             }
