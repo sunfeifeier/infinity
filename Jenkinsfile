@@ -15,7 +15,7 @@ pipeline {
                 println "Build started"
             }
         }
-        stage('Linux CICD') {
+        stage('CICD') {
             parallel {
                 stage('linux') {
                     agent {
