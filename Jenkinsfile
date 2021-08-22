@@ -108,33 +108,6 @@ pipeline {
                         }
                     }
                 }
-                stage('Windows') {
-                    agent {
-                        label "master"
-                    }
-                    stages {
-                        stage('setup') {
-                            steps {
-                                sh label: 'Active python venv', script: '''
-                                    echo "==========This is windows setup=========="
-                                    '''
-                            }
-                        }
-                        stage('build') {
-                            steps {
-                                sh label: 'Active python venv', script: '''
-                                    echo "==========This is windows build=========="
-                                    '''
-                            }
-                        }
-                    }
-                    post {
-                        always {
-                            sh label: 'Windows build done', script: 'echo "Done Windows build"'
-                            //cleanWs()//
-                        }
-                    }
-                }
             }
         }
     }
