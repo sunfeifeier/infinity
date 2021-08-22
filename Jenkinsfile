@@ -31,7 +31,7 @@ pipeline {
                                     source venv/bin/activate
                                     pip install --upgrade pip
                                     if [ ! -f ./requirements2.txt ]; then
-                                        echo "Couldn'f find requirements.txt
+                                        echo "Couldn'f find requirements.txt"
                                     fi
                                     pip install -r requirements.txt
                                     echo "==========End virtual env=========="
