@@ -18,9 +18,7 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /code/
-
-# expose port
-EXPOSE 8000
+RUN chmod 755 /code/entrypoint.sh
 
 # run server
 CMD ["/code/entrypoint.sh"]
