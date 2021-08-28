@@ -13,6 +13,7 @@ WORKDIR /code
 COPY requirements.txt /code/
 
 # install dependencies
+RUN pip install -U pip
 RUN pip install -r requirements.txt
 
 # copy project
