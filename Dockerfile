@@ -20,3 +20,6 @@ COPY . /code/
 
 # expose port
 EXPOSE 8000
+
+# run server
+CMD ["/code/entrypoint.sh"]
