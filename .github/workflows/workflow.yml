@@ -34,7 +34,7 @@ jobs:
           DOCKER_REPOSITORY: infinity
           IMAGE_TAG: latest
         run: |
-          docker build -t $DOCKER_REGISTRY/$DOCKER_REPOSITORY:$IMAGE_TAG -f ./Dockerfile2 .
+          docker build -t $DOCKER_REGISTRY/$DOCKER_REPOSITORY:$IMAGE_TAG -f ./Dockerfile .
 
       - name: Push image to Docker Hub if main branch
         env:
