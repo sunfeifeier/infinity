@@ -49,6 +49,7 @@ jobs:
 
   notify-build:
     needs: docker-build
+    if: always() # Pick up events even if the job fails or is canceled.
     runs-on: ubuntu-18.04
     steps:
       - name: action-slack
@@ -61,4 +62,3 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        if: always() # Pick up events even if the job fails or is canceled.
