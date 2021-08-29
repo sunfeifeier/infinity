@@ -57,6 +57,7 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        if: always()
 
   # notify-build:
   #   needs: docker-build
