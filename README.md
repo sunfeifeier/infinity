@@ -22,3 +22,6 @@ $ docker build -t registry/infinity:v1 -f ./Dockerfile .
 $ docker images
 $ docker run -d -p 8000:8000 registry/infinity:v1
 ```
+
+
+## Test to triiger github action build
