@@ -47,11 +47,6 @@ jobs:
             docker push $DOCKER_REGISTRY/$DOCKER_REPOSITORY:$IMAGE_TAG
           fi
 
-  notify-build:
-    needs: docker-build
-    if: always() # Pick up events even if the job fails or is canceled.
-    runs-on: ubuntu-18.04
-    steps:
       - name: action-slack
         uses: 8398a7/action-slack@v3.8.2
         with:
@@ -62,3 +57,19 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
+
+  # notify-build:
+  #   needs: docker-build
+  #   if: always() # Pick up events even if the job fails or is canceled.
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - name: action-slack
+  #       uses: 8398a7/action-slack@v3.8.2
+  #       with:
+  #         status: ${{ job.status }}
+  #         fields: repo,message,commit,author,ref,job,took
+  #         mention: 'here'
+  #         if_mention: failure
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+  #         MATRIX_CONTEXT: ${{ toJson(matrix) }}
