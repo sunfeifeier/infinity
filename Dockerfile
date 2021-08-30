@@ -6,18 +6,19 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 ENV PYTHONWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
 
-# set working directory
+# set working directory in container
 WORKDIR /code
 
-# copy dependencies
+# copy dependencies into container code folder
 COPY requirements.txt /code/
 
-# install dependencies
+# upgrade pip install dependencies 
 RUN pip install -U pip
 RUN pip install -r requirements.txt
 
-# copy project
+# copy all the app origial project into code folder
 COPY . /code/
+# let contrainer has the right to run this entrypoint
 RUN chmod 755 /code/entrypoint.sh
 
 # run server
