@@ -24,4 +24,4 @@ $ docker run -d -p 8000:8000 registry/infinity:v1
 ```
 
 
-## Test to triiger github action build
+## update docker hub username
