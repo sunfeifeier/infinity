@@ -26,11 +26,11 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: tonylixu/infinity
+          images: sunfeiok/infinity
 
       - name: Build and tag image
         env:
-          DOCKER_REGISTRY: tonylixu
+          DOCKER_REGISTRY: sunfeiok
           DOCKER_REPOSITORY: infinity
           IMAGE_TAG: latest
         run: |
@@ -38,7 +38,7 @@ jobs:
 
       - name: Push image to Docker Hub if main branch
         env:
-          DOCKER_REGISTRY: tonylixu
+          DOCKER_REGISTRY: sunfeiok
           DOCKER_REPOSITORY: infinity
           IMAGE_TAG: latest
         run: |
